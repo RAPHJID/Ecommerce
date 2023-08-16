@@ -1,0 +1,5 @@
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.csproj.AssemblyReference.cache
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.GeneratedMSBuildEditorConfig.editorconfig
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.AssemblyInfoInputs.cache
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.AssemblyInfo.cs
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.csproj.CoreCompileInputs.cache
