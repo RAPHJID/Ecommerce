@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Services
 {
-    internal class PurchaseService : IPurchaseInterface
+    internal class ProductService : IProductInterface
     {   
 
         private readonly HttpClient _httpClient;
         private readonly string _url = " http://localhost:3000/products";
-        public PurchaseService()
+        public ProductService()
         {
             _httpClient = new HttpClient(); 
         }
         
-        public async Task<SuccessMessage> CreatePurchaseAsync(AddPurchase purchase)
+        public async Task<SuccessMessage> CreateProductAsync(AddProduct product)
         {
 
             
@@ -29,66 +29,66 @@ namespace Ecommerce.Services
 
             if (response.IsSuccessStatusCode)
             {
-                return new SuccessMessage { Message = "Purchase Created Successfully" };
+                return new SuccessMessage { Message = "Product Created Successfully" };
             }
 
-            throw new Exception("Purchase Creation Failed");
+            throw new Exception("Product Creation Failed");
         }
 
-        public async Task<SuccessMessage> DeletePurchaseAsync(string id)
+        public async Task<SuccessMessage> DeleteProductAsync(string id)
         {
             var response = await _httpClient.DeleteAsync(_url+"/"+id);
 
             if (response.IsSuccessStatusCode)
             {
-                return new SuccessMessage { Message = "Purchase Deleted  Successfully" };
+                return new SuccessMessage { Message = "Product Deleted  Successfully" };
             }
 
-            throw new Exception("Purchase Deletion Failed");
+            throw new Exception("Product Deletion Failed");
         }
 
-        public async Task<List<Purchase>> GetAllPurchasesAsync()
+        public async Task<List<Product>> GetAllProductsAsync()
         {
 
             var response = await _httpClient.GetAsync(_url);
-            var purchases = JsonConvert.DeserializeObject<List<Purchase>>(await response.Content.ReadAsStringAsync());
+            var products = JsonConvert.DeserializeObject<List<Product>>(await response.Content.ReadAsStringAsync());
 
             if (response.IsSuccessStatusCode)
             {
-                return purchases;
+                return products;
             }
 
-            throw new Exception("Cant Get purchases");
+            throw new Exception("Cant Get products");
         }
 
-        public async  Task<Purchase> GetPurchaseAsync(string id)
+        public async  Task<Product> GetProductAsync(string id)
         {
             var response = await _httpClient.GetAsync(_url + "/" + id);
-            var purchase = JsonConvert.DeserializeObject<Purchase>(await response.Content.ReadAsStringAsync()); 
+            var product = JsonConvert.DeserializeObject<Product>(await response.Content.ReadAsStringAsync()); 
 
             if (response.IsSuccessStatusCode)
             {
-                return purchase;
+                return product;
             }
 
-            throw new Exception("Cant Get purchase");
+            throw new Exception("Cant Get product");
         }
 
-        public async Task<SuccessMessage> UpdatePurchaseAsync(Purchase purchase)
+        public async Task<SuccessMessage> UpdateProductAsync(Product product)
         {
 
-            var content = JsonConvert.SerializeObject(purchase);
+            var content = JsonConvert.SerializeObject(product);
             
             var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PutAsync(_url + "/" + purchase.Id,bodyContent);
+            var response = await _httpClient.PutAsync(_url + "/" + product.Id,bodyContent);
 
             if (response.IsSuccessStatusCode)
             {
-                return new SuccessMessage { Message = "Purchase Updated   Successfully" };
+                return new SuccessMessage { Message = "Product Updated   Successfully" };
             }
 
-            throw new Exception("Purchase Updating  Failed");
+            throw new Exception("Product Updating  Failed");
         }
     }
 }

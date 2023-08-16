@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Controller
 {
-    public class PurchasesController
+    public class ProductsController
     {
-        PurchaseService purchaseService = new PurchaseService();
+        ProductService productService = new ProductService();
 
         public async static  Task  Init()
         {
@@ -27,12 +27,12 @@ namespace Ecommerce.Controller
             var validateResults=Validation.Validate(new List<string> { input });
             if (!validateResults)
             {
-                await PurchasesController.Init();
+                await ProductsController.Init();
 
             }
             else
             {
-               await new PurchasesController().MenuRedirect(input);// instance method 
+               await new ProductsController().MenuRedirect(input);// instance method 
             }
            
         }
@@ -54,7 +54,7 @@ namespace Ecommerce.Controller
                     await DeleteaPurchase();
                     break;
                 default:
-                   await  PurchasesController.Init();
+                   await  ProductsController.Init();
                     break;
             }
         }
@@ -80,7 +80,7 @@ namespace Ecommerce.Controller
             try
             {
                 //if it goes right 
-               var res= await purchaseService.CreatePurchaseAsync(newPurchase);
+               var res= await productService.CreatePurchaseAsync(newPurchase);
                Console.WriteLine(res.Message);
             }catch (Exception ex)
             {
@@ -107,7 +107,7 @@ namespace Ecommerce.Controller
 
             try
             {
-                var res = await purchaseService.UpdatePurchaseAsync(updatedPurchase);
+                var res = await productService.UpdatePurchaseAsync(updatedPurchase);
                 Console.WriteLine(res.Message);
             }catch(Exception ex)
             {
@@ -120,7 +120,7 @@ namespace Ecommerce.Controller
         {
             try
             {
-                var purchases = await purchaseService.GetAllPurchasesAsync();
+                var purchases = await productService.GetAllPurchasesAsync();
                 foreach (var purchase in purchases)
                 {
                     await Console.Out.WriteLineAsync($"{purchase.Id} . {purchase.Price}");
@@ -139,7 +139,7 @@ namespace Ecommerce.Controller
          
             try
             {
-                var res = await purchaseService.GetPurchaseAsync(id);
+                var res = await productService.GetPurchaseAsync(id);
                 Console.WriteLine(res.Price);
                 
             }
@@ -157,7 +157,7 @@ namespace Ecommerce.Controller
 
             try
             {
-                var res = await purchaseService.DeletePurchaseAsync(id);
+                var res = await productService.DeletePurchaseAsync(id);
                 Console.WriteLine(res.Message);
             }
             catch (Exception ex)
