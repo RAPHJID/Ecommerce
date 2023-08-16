@@ -42,16 +42,16 @@ namespace Ecommerce.Controller
           switch(id)
             {
                 case "1":
-                   await AddnewPurchase();
+                   await AddnewProduct();
                     break;
                 case "2":
-                   await ViewPurchases();
+                   await ViewProducts();
                     break;
                 case "3":
-                    await updateaPurchase();
+                    await updateaProduct();
                     break;
                 case "4":
-                    await DeleteaPurchase();
+                    await DeleteaProduct();
                     break;
                 default:
                    await  ProductsController.Init();
@@ -59,20 +59,20 @@ namespace Ecommerce.Controller
             }
         }
 
-        public async Task AddnewPurchase()
+        public async Task AddnewProduct()
         {
 
             Console.WriteLine("Enter item Name:");
-            var purchaseName = Console.ReadLine();
+            var productName = Console.ReadLine();
 
 
             Console.WriteLine("Enter item Price:");
-            var purchasePrice = Console.ReadLine();
+            var productPrice = Console.ReadLine();
             //Creat AddBook Instance
-            var newPurchase = new AddPurchase()
+            var newProduct = new AddProduct()
             {
-                Name = purchaseName,
-                Price = purchasePrice
+                Name = productName,
+                Price = productPrice
             };
 
             //call Service
@@ -80,34 +80,34 @@ namespace Ecommerce.Controller
             try
             {
                 //if it goes right 
-               var res= await productService.CreatePurchaseAsync(newPurchase);
+               var res= await productService.CreateProductAsync(newProduct);
                Console.WriteLine(res.Message);
             }catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-        public async Task updateaPurchase()
+        public async Task updateaProduct()
         {
-            await ViewPurchases();
+            await ViewProducts();
             Console.WriteLine("Enter the Id of the item you want to update");
             var id = Console.ReadLine();
             Console.WriteLine("Enter item Name:");
-            var bookTitle = Console.ReadLine();
+            var productName = Console.ReadLine();
 
             Console.WriteLine("Enter item Price:");
-            var purchasePrice = Console.ReadLine();
+            var productPrice = Console.ReadLine();
             //validate
-            var updatedPurchase = new Purchase()
+            var updatedProduct = new Product()
             {   
                 Id=id,
-                Name = purchaseName,
-                Price = purchasePrice
+                Name = productName,
+                Price = productPrice
             };
 
             try
             {
-                var res = await productService.UpdatePurchaseAsync(updatedPurchase);
+                var res = await productService.UpdateProductAsync(updatedProduct);
                 Console.WriteLine(res.Message);
             }catch(Exception ex)
             {
@@ -116,17 +116,17 @@ namespace Ecommerce.Controller
 
         }
 
-        public async Task ViewPurchases()
+        public async Task ViewProducts()
         {
             try
             {
-                var purchases = await productService.GetAllPurchasesAsync();
-                foreach (var purchase in purchases)
+                var products = await productService.GetAllProductsAsync();
+                foreach (var product in products)
                 {
-                    await Console.Out.WriteLineAsync($"{purchase.Id} . {purchase.Price}");
+                    await Console.Out.WriteLineAsync($"{product.Id} . {product.Price}");
                     Console.WriteLine("View One of the Goods");
                     var id =Console.ReadLine();
-                    await ViewOnePurchase(id);
+                    await ViewOneProduct(id);
                 }
             }
             catch(Exception ex)
@@ -134,12 +134,12 @@ namespace Ecommerce.Controller
                 await Console.Out.WriteLineAsync(ex.Message);
             }
         }
-        public async Task ViewOnePurchase(string id)
+        public async Task ViewOneProduct(string id)
         {
          
             try
             {
-                var res = await productService.GetPurchaseAsync(id);
+                var res = await productService.GetProductAsync(id);
                 Console.WriteLine(res.Price);
                 
             }
@@ -149,15 +149,15 @@ namespace Ecommerce.Controller
             }
         }
 
-        public async Task DeleteaPurchase()
+        public async Task DeleteaProduct()
         {
-            await ViewPurchases();
-            Console.WriteLine("Enter the Id of the Purchase you want to Delete");
+            await ViewProduct();
+            Console.WriteLine("Enter the Id of the Product you want to Delete");
             var id = Console.ReadLine();
 
             try
             {
-                var res = await productService.DeletePurchaseAsync(id);
+                var res = await productService.DeleteProductAsync(id);
                 Console.WriteLine(res.Message);
             }
             catch (Exception ex)

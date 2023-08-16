@@ -23,7 +23,7 @@ namespace Ecommerce.Services
         {
 
             
-          var content = JsonConvert.SerializeObject(purchase);
+          var content = JsonConvert.SerializeObject(product);
             var bodyContent = new StringContent(content, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _httpClient.PostAsync(_url, bodyContent);
 
@@ -47,7 +47,7 @@ namespace Ecommerce.Services
             throw new Exception("Product Deletion Failed");
         }
 
-        public async Task<List<Product>> GetAllProductsAsync()
+        public async Task<List<Product>> GetAllProductAsync()
         {
 
             var response = await _httpClient.GetAsync(_url);
