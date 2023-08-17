@@ -3,3 +3,15 @@
 /home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.AssemblyInfoInputs.cache
 /home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.AssemblyInfo.cs
 /home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.csproj.CoreCompileInputs.cache
+/home/jidraf/Desktop/ecommerce/bin/Debug/net7.0/ecommerce
+/home/jidraf/Desktop/ecommerce/bin/Debug/net7.0/ecommerce.deps.json
+/home/jidraf/Desktop/ecommerce/bin/Debug/net7.0/ecommerce.runtimeconfig.json
+/home/jidraf/Desktop/ecommerce/bin/Debug/net7.0/ecommerce.dll
+/home/jidraf/Desktop/ecommerce/bin/Debug/net7.0/ecommerce.pdb
+/home/jidraf/Desktop/ecommerce/bin/Debug/net7.0/Newtonsoft.Json.dll
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.csproj.CopyComplete
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.dll
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/refint/ecommerce.dll
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.pdb
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ecommerce.genruntimeconfig.cache
+/home/jidraf/Desktop/ecommerce/obj/Debug/net7.0/ref/ecommerce.dll

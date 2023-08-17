@@ -123,7 +123,7 @@ namespace Ecommerce.Controller
                 var products = await productService.GetAllProductsAsync();
                 foreach (var product in products)
                 {
-                    await Console.Out.WriteLineAsync($"{product.Id} . {product.Price}");
+                    await Console.Out.WriteLineAsync($"{product.Name} . {product.Price}");
                     Console.WriteLine("View One of the Goods");
                     var id =Console.ReadLine();
                     await ViewOneProduct(id);
@@ -151,7 +151,7 @@ namespace Ecommerce.Controller
 
         public async Task DeleteaProduct()
         {
-            await ViewProduct();
+            await ViewProducts();
             Console.WriteLine("Enter the Id of the Product you want to Delete");
             var id = Console.ReadLine();
 

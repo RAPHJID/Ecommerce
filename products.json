@@ -4,6 +4,11 @@
       "id": 1,
       "name": "yeezy v3",
       "price": "4000"
+    },
+    {
+      "Name": "Nike Airforce 1",
+      "Price": "500",
+      "id": 2
     }
   ]
 }

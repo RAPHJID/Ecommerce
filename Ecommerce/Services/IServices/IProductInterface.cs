@@ -11,7 +11,7 @@ namespace Ecommerce.Services.IServices
         Task<SuccessMessage> UpdateProductAsync(Product product);
         Task<SuccessMessage> DeleteProductAsync(string id);
         Task<Product> GetProductAsync(string id);
-        Task<List<Product>> GetAllProductAsync();
+        Task<List<Product>> GetAllProductsAsync();
 
     }
 }

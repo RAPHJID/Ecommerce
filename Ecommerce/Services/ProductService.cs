@@ -47,7 +47,7 @@ namespace Ecommerce.Services
             throw new Exception("Product Deletion Failed");
         }
 
-        public async Task<List<Product>> GetAllProductAsync()
+        public async Task<List<Product>> GetAllProductsAsync()
         {
 
             var response = await _httpClient.GetAsync(_url);
