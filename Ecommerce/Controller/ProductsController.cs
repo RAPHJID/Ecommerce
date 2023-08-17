@@ -32,7 +32,7 @@ namespace Ecommerce.Controller
             }
             else
             {
-               await new ProductsController().MenuRedirect(input);// instance method 
+               await new ProductsController().MenuRedirect(input);
             }
            
         }
@@ -53,6 +53,7 @@ namespace Ecommerce.Controller
                 case "4":
                     await DeleteaProduct();
                     break;
+                    
                 default:
                    await  ProductsController.Init();
                     break;
@@ -68,18 +69,14 @@ namespace Ecommerce.Controller
 
             Console.WriteLine("Enter item Price:");
             var productPrice = Console.ReadLine();
-            //Creat AddBook Instance
             var newProduct = new AddProduct()
             {
                 Name = productName,
                 Price = productPrice
             };
 
-            //call Service
-
             try
             {
-                //if it goes right 
                var res= await productService.CreateProductAsync(newProduct);
                Console.WriteLine(res.Message);
             }catch (Exception ex)
@@ -97,7 +94,6 @@ namespace Ecommerce.Controller
 
             Console.WriteLine("Enter item Price:");
             var productPrice = Console.ReadLine();
-            //validate
             var updatedProduct = new Product()
             {   
                 Id=id,
@@ -123,15 +119,15 @@ namespace Ecommerce.Controller
                 var products = await productService.GetAllProductsAsync();
                 foreach (var product in products)
                 {
-                    await Console.Out.WriteLineAsync($"{product.Name} . {product.Price}");
-                    Console.WriteLine("View One of the Goods");
-                    var id =Console.ReadLine();
-                    await ViewOneProduct(id);
+               
+                    Console.WriteLine($"Id: {product.Id}, name:{product.Name}. price :{product.Price}");
                 }
+
             }
             catch(Exception ex)
             {
-                await Console.Out.WriteLineAsync(ex.Message);
+                
+                Console.WriteLine(ex.Message);
             }
         }
         public async Task ViewOneProduct(string id)
@@ -140,7 +136,8 @@ namespace Ecommerce.Controller
             try
             {
                 var res = await productService.GetProductAsync(id);
-                Console.WriteLine(res.Price);
+               
+                Console.WriteLine($"Product: {res.Name} - Price: {res.Price}");
                 
             }
             catch (Exception ex)
